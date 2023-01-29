@@ -1,6 +1,8 @@
 let arc = require('@architect/functions')
 let {ApolloServer, gql} = require('apollo-server-lambda')
 import resolvers  from "./resolvers"
+var resolvers_1 = __importDefault(require("./resolvers"));
+let resolvers = require("./resolvers/index.js")
 
 let typeDefs = gql`
       type Price {
@@ -55,14 +57,15 @@ let typeDefs = gql`
     }
 `
 
-let resolvers =  resolvers
 
-let server = new ApolloServer({typeDefs, resolvers})
+
+let server = new ApolloServer({typeDefs,resolvers_1})
 let handler = server.createHandler()
 
 exports.handler = function(event, context, callback) {
   let body = arc.http.helpers.bodyParser(event)
   console.log(body)
+  console.log(resolvers)
   // Support for AWS HTTP API syntax
   event.httpMethod = event.httpMethod
     ? event.httpMethod
