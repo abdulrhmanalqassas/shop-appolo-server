@@ -1,7 +1,8 @@
 {
   "dependencies": {
-    "@architect/functions": "latest",
-    "apollo-server-lambda": "^2.21.0",
-    "graphql": "^15.5.0"
+    "apollo-server": "^2.23.0",
+    "apollo-server-lambda": "^3.10.2",
+    "graphql": "^15.8.0",
+    "@architect/functions": "latest"
   }
 }
