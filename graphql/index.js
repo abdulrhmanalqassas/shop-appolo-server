@@ -57,7 +57,7 @@ let typeDefs = gql`
 //     }
 // `
 
-let server = new ApolloServer({ typeDefs });
+let server = new ApolloServer({ typeDefs, mocks : true });
 let handler = server.createHandler();
 
 exports.handler = function (event, context, callback) {
