@@ -1,15 +1,15 @@
-let arc = require('@architect/functions')
-let {ApolloServer, gql} = require('apollo-server-lambda')
+let arc = require("@architect/functions");
+let { ApolloServer, gql } = require("apollo-server-lambda");
 // import resolvers  from "./resolvers"
 // var resolvers_1 = __importDefault(require("./resolvers"));
 // let resolvers = require("./resolvers/index.js")
 
-// let typeDefs = gql`
-//       type Price {
-//         currency: Currency!,
-//         amount: Float!
-//     }
-
+let typeDefs = gql`
+  type Query {
+    currency: Currency!
+    amount: Float!
+  }
+`;
 //     type Attribute {
 //         displayValue: String,
 //         value: String,
@@ -57,26 +57,23 @@ let {ApolloServer, gql} = require('apollo-server-lambda')
 //     }
 // `
 
+let server = new ApolloServer({ typeDefs });
+let handler = server.createHandler();
 
-
-let server = new ApolloServer({typeDefs,resolvers_1})
-let handler = server.createHandler()
-
-exports.handler = function(event, context, callback) {
-  let body = arc.http.helpers.bodyParser(event)
-  console.log(body)
-  console.log(resolvers)
+exports.handler = function (event, context, callback) {
+  let body = arc.http.helpers.bodyParser(event);
+  console.log(body);
+  console.log(resolvers);
   // Support for AWS HTTP API syntax
   event.httpMethod = event.httpMethod
     ? event.httpMethod
-    : event.requestContext.http.method
+    : event.requestContext.http.method;
   // Also support hte HTTP syntax...
-  event.path = event.rawPath
+  event.path = event.rawPath;
   // Body is now parsed, re-encode to JSON for Apollo
-  event.body = JSON.stringify(body)
-  handler(event, context, callback)
-}
-
+  event.body = JSON.stringify(body);
+  handler(event, context, callback);
+};
 
 // var __importDefault = (this && this.__importDefault) || function (mod) {
 //   return (mod && mod.__esModule) ? mod : { "default": mod };
