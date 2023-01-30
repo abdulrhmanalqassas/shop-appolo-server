@@ -1,6 +1,6 @@
 let arc = require('@architect/functions')
 let { gql} = require('apollo-server-lambda')
-let a =  require('apollo-server')
+let ApolloServer =  require('apollo-server')
 
 
 
