@@ -1,6 +1,6 @@
 let arc = require('@architect/functions')
 let {ApolloServer, gql} = require('apollo-server-lambda')
-
+console.log(">>>>>>>>>>>>>>>>>>>>>>>>in index file")
 let typeDefs = gql`
   type Query {
     hello: String
