@@ -106,8 +106,8 @@ let { ApolloServer, gql } = require("apollo-server-lambda");
 //   },
 // };
 
-var schema_1 = __importDefault(require("../graphql/dist/schema"));
-var resolvers_1 = __importDefault(require("../graphql/dist/resolvers"));
+var schema_1 = require("../graphql/dist/schema.js");
+var resolvers_1 = require("../graphql/dist/resolvers/index.js");
 
 
 let server = new ApolloServer({
@@ -118,6 +118,7 @@ let handler = server.createHandler();
 
 exports.handler = function (event, context, callback) {
   let body = arc.http.helpers.bodyParser(event);
+  console.log(body)
   console.log(body);
   // Support for AWS HTTP API syntax
   event.httpMethod = event.httpMethod
@@ -128,4 +129,5 @@ exports.handler = function (event, context, callback) {
   // Body is now parsed, re-encode to JSON for Apollo
   event.body = JSON.stringify(body);
   handler(event, context, callback);
+
 };
