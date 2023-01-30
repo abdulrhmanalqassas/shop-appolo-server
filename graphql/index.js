@@ -17,9 +17,7 @@ let resolvers = {
 }
 
 let server = new ApolloServer({typeDefs, resolvers})
-server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
-});
+
 let handler = server.createHandler()
 
 exports.handler = function(event, context, callback) {
