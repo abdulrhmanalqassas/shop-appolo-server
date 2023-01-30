@@ -1,5 +1,8 @@
 let arc = require('@architect/functions')
-let {ApolloServer, gql} = require('apollo-server-lambda')
+let { gql} = require('apollo-server-lambda')
+let a =  require('apollo-server')
+
+
 
 let typeDefs = gql`
   type Query {
@@ -14,6 +17,9 @@ let resolvers = {
 }
 
 let server = new ApolloServer({typeDefs, resolvers})
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
+});
 let handler = server.createHandler()
 
 exports.handler = function(event, context, callback) {

@@ -27,6 +27,7 @@
     "test": "echo 'Add tests for your features.'"
   },
   "dependencies": {
-    "@architect/sandbox": "latest"
+    "@architect/sandbox": "latest",
+    "apollo-server": "^3.11.1"
   }
 }
